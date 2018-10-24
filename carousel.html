@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Birds Carousel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src=""></script>
+</head>
+<body>
+<div class="container">
+    <div class="carousel">
+        <ul>
+            <li class="carousel-item activ-img"><img
+                    src="https://cdn.pixabay.com/photo/2018/10/15/18/32/bee-eaters-3749679__340.jpg" alt=""></li>
+            <li class="carousel-item"><img src="https://cdn.pixabay.com/photo/2018/10/19/22/13/owl-3759775__340.jpg"
+                                           alt=""></li>
+            <li class="carousel-item"><img src="https://cdn.pixabay.com/photo/2018/10/16/22/58/swan-3752746__340.jpg"
+                                           alt=""></li>
+            <li class="carousel-item"><img src="https://cdn.pixabay.com/photo/2018/10/18/18/47/colors-3757162__340.jpg"
+                                           alt=""></li>
+        </ul>
+    </div>
+    <a href="#" class="btn-prev"><</a>
+    <a href="#" class="btn-next">></a>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        function carouselNext() {
+            if ($('.activ-img').next().length > 0) {
+                $('.activ-img').removeClass('activ-img').addClass('prev-img');
+                $('.prev-img').next().addClass('activ-img');
+                $('.prev-img').removeClass('prev-img');
+            } else {
+                $(".carousel .carousel-item:first-child").addClass('activ-img');
+                $(".carousel .carousel-item:last-child").removeClass('activ-img');
+
+            }
+        };
+        setInterval(carouselNext, 5000);
+
+
+        $(".btn-next").click(function () {
+            carouselNext();
+        });
+
+
+    });
+
+</script>
+</body>
+</html>
